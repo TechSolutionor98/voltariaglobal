@@ -291,8 +291,8 @@ export default async function CategoryPage({ params }: PageProps) {
                 key={index} 
                 className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-16 group"
               >
-                {/* Column 1: Image & Highlights (4 cols) */}
-                <div className="lg:col-span-4 flex flex-col justify-between lg:h-full space-y-6">
+                {/* Column 1: Image (4 cols) */}
+                <div className="lg:col-span-4 flex flex-col lg:h-full">
                   {/* Product Image */}
                   <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100/60 shadow-inner flex-shrink-0">
                     <Image
@@ -306,27 +306,10 @@ export default async function CategoryPage({ params }: PageProps) {
                       Model: {item.model}
                     </span>
                   </div>
-
-                  {/* Bullet Highlights */}
-                  <div className="space-y-2 bg-gray-50/30 p-4 rounded-2xl border border-gray-100/40">
-                    <h4 className="text-xxs font-black text-gray-400 uppercase tracking-widest">
-                      Product Highlights
-                    </h4>
-                    <ul className="space-y-1.5">
-                      {item.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2 text-xxs sm:text-xs text-gray-700">
-                          <svg className="w-3.5 h-3.5 text-red-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          <span className="font-semibold">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
 
-                {/* Column 2: Title, Description & B2B Sourcing Parameters (4 cols) */}
-                <div className="lg:col-span-4 flex flex-col justify-between lg:h-full space-y-6">
+                {/* Column 2: Title, Description & Highlights (4 cols) */}
+                <div className="lg:col-span-4 flex flex-col lg:h-full space-y-5">
                   <div className="space-y-2">
                     <h3 className="text-xl sm:text-2xl font-black text-gray-950 uppercase tracking-tight leading-tight">
                       {item.name}
@@ -336,30 +319,17 @@ export default async function CategoryPage({ params }: PageProps) {
                     </p>
                   </div>
 
-                  {/* B2B Sourcing Specs */}
-                  <div className="bg-red-50/30 rounded-2xl p-4 border border-red-100/20 space-y-3">
-                    <h4 className="text-xxs font-black text-red-600 uppercase tracking-widest">
-                      B2B Sourcing Parameters
-                    </h4>
-                    <div className="grid grid-cols-2 gap-y-3 gap-x-4 text-xxs font-semibold text-gray-900">
-                      <div>
-                        <span className="text-gray-400 block uppercase font-medium">Min. Order (MOQ)</span>
-                        <span className="font-bold text-gray-900">{item.moq}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 block uppercase font-medium">Supply Capacity</span>
-                        <span className="font-bold text-gray-900">{item.capacity}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 block uppercase font-medium">Packaging</span>
-                        <span className="font-bold text-gray-900 line-clamp-1" title={item.packaging}>{item.packaging}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 block uppercase font-medium">OEM Options</span>
-                        <span className="font-bold text-gray-900">{item.customization}</span>
-                      </div>
-                    </div>
-                  </div>
+                  {/* Product Highlights */}
+                  <ul className="space-y-2">
+                    {item.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-2 text-xs text-gray-700">
+                        <svg className="w-3.5 h-3.5 text-red-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span className="font-semibold">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 {/* Column 3: Technical Parameters & Button (4 cols) */}
