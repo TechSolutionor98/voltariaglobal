@@ -4,11 +4,37 @@ import { useState } from "react";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submittedType, setSubmittedType] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    businessType: "",
+    otherBusinessType: "",
+    companyName: "",
+    businessInfo: "", // handles website, location, or license
+    message: ""
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmittedType(formData.businessType);
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    console.log("Form Submitted:", formData);
+    
+    // Auto reset after 8 seconds
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({
+        name: "",
+        email: "",
+        businessType: "",
+        otherBusinessType: "",
+        companyName: "",
+        businessInfo: "",
+        message: ""
+      });
+      setSubmittedType("");
+    }, 8000);
   };
 
   return (
@@ -79,90 +105,244 @@ export default function Contact() {
           {/* Right Column: Contact form */}
           <div className="lg:col-span-7 w-full bg-white rounded-3xl border border-gray-100 p-8 md:p-10 shadow-lg">
             {submitted ? (
-              <div className="py-12 text-center space-y-4">
+              <div className="py-12 text-center space-y-4 animate-fade-in">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center scale-110 animate-bounce">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-950 uppercase tracking-wide">
-                  Message Transmitted!
+                  {submittedType === "Wholesaler" || submittedType === "Distributor" || submittedType === "Reseller" || submittedType === "Dealer"
+                    ? "B2B Request Received!"
+                    : submittedType === "Contractor" || submittedType === "Builder"
+                    ? "Spec Sheet Logged!"
+                    : submittedType === "Retailer" || submittedType === "Electrical Store"
+                    ? "Retail Inquiry Logged!"
+                    : "Message Transmitted!"}
                 </h3>
-                <p className="text-gray-500 text-sm max-w-sm mx-auto">
-                  Thank you for connecting. A representative from our project engineering desk will contact you within 24 hours.
+                <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
+                  {submittedType === "Wholesaler" || submittedType === "Distributor" || submittedType === "Reseller" || submittedType === "Dealer"
+                    ? "Thank you. Our partnership development team will verify your dealer details and reach out within 24 hours with catalog pricing."
+                    : submittedType === "Contractor" || submittedType === "Builder"
+                    ? "Thank you for your submission. An integration engineer will review your project details and contact you within 24 hours."
+                    : submittedType === "Retailer" || submittedType === "Electrical Store"
+                    ? "Thank you. A retail support specialist will contact you with wholesale pricing lists and merchant accounts within 24 hours."
+                    : "Thank you for connecting. A representative from our project engineering desk will contact you within 24 hours."}
                 </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Name field */}
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                      Full Name
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      required
-                      placeholder="e.g. John Doe"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
-                    />
-                  </div>
-
-                  {/* Email field */}
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                      Email Address
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      placeholder="e.g. john@company.com"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
-                    />
-                  </div>
-                </div>
-
-                {/* Subject field */}
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                    Project Type / Interest
-                  </label>
-                  <select
-                    id="subject"
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium appearance-none"
+                <div className="pt-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        name: "",
+                        email: "",
+                        businessType: "",
+                        otherBusinessType: "",
+                        companyName: "",
+                        businessInfo: "",
+                        message: ""
+                      });
+                      setSubmittedType("");
+                    }}
+                    className="px-6 py-2.5 border border-gray-200 text-gray-600 hover:text-black font-semibold text-xs rounded-xl hover:bg-gray-50 transition-all uppercase tracking-wider cursor-pointer"
                   >
-                    <option>Residential Installation</option>
-                    <option>Commercial Grid Solutions</option>
-                    <option>Battery Storage & Storage Vaults</option>
-                    <option>Other Corporate Inquiry</option>
-                  </select>
+                    Send Another Message
+                  </button>
                 </div>
+              </div>
+            ) : (() => {
+              // Dynamic labels and placeholders based on businessType
+              let companyLabel = "Company Name";
+              let companyPlaceholder = "e.g. Solar Tech Solutions Ltd.";
+              
+              let infoLabel = "Business Website / URL";
+              let infoPlaceholder = "e.g. www.solartech.com";
 
-                {/* Message field */}
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                    Detailed Message
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    placeholder="Provide details about your average energy consumption, property size, or custom microgrid requirements..."
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium resize-none"
-                  />
-                </div>
+              if (formData.businessType === "Retailer" || formData.businessType === "Electrical Store") {
+                companyLabel = "Store / Shop Name";
+                companyPlaceholder = "e.g. Voltaria Retail Hamburg";
+                
+                infoLabel = "Store Location (City, Country) or Website";
+                infoPlaceholder = "e.g. www.store-site.com or Hamburg, DE";
+              } else if (formData.businessType === "Contractor" || formData.businessType === "Builder") {
+                companyLabel = "Company / Firm Name";
+                companyPlaceholder = "e.g. Apex Builders Inc.";
+                
+                infoLabel = "License Number / Website";
+                infoPlaceholder = "e.g. www.contractor-site.com or Lic #12345";
+              }
 
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-red-700 active:scale-[0.99] transition-all shadow-md hover:shadow-lg text-sm"
-                >
-                  Transmit Request
-                </button>
-              </form>
-            )}
+              // Dynamic message placeholder
+              let messagePlaceholder = "Provide details about your average energy consumption, property size, or custom microgrid requirements...";
+              if (formData.businessType === "Wholesaler" || formData.businessType === "Distributor" || formData.businessType === "Reseller") {
+                messagePlaceholder = "Describe your bulk purchase needs, product line interests, and standard order volumes...";
+              } else if (formData.businessType === "Contractor" || formData.businessType === "Builder") {
+                messagePlaceholder = "Provide details about your upcoming construction projects, structural load specs, and required solar capacities...";
+              } else if (formData.businessType === "Dealer" || formData.businessType === "Electrical Store") {
+                messagePlaceholder = "Provide details about your showroom or retail inventory needs and target delivery timelines...";
+              } else if (formData.businessType === "Retailer") {
+                messagePlaceholder = "Please describe your storefront details, target customer base, and volume requirements...";
+              }
+
+              return (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Name field */}
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                        Full Name
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="e.g. John Doe"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
+                      />
+                    </div>
+
+                    {/* Email field */}
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                        Email Address
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="e.g. john@company.com"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Business Type field */}
+                  <div className="space-y-2">
+                    <label htmlFor="businessType" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                      Business Type
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="businessType"
+                        required
+                        value={formData.businessType}
+                        onChange={(e) => {
+                          const newType = e.target.value;
+                          setFormData({
+                            ...formData,
+                            businessType: newType,
+                            otherBusinessType: newType === "Other" ? formData.otherBusinessType : "",
+                            companyName: newType ? formData.companyName : "",
+                            businessInfo: newType ? formData.businessInfo : ""
+                          });
+                        }}
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium appearance-none pr-10"
+                      >
+                        <option value="">Select Business Type</option>
+                        <option value="Retailer">Retailer</option>
+                        <option value="Dealer">Dealer</option>
+                        <option value="Distributor">Distributor</option>
+                        <option value="Wholesaler">Wholesaler</option>
+                        <option value="Contractor">Contractor</option>
+                        <option value="Builder">Builder</option>
+                        <option value="Reseller">Reseller</option>
+                        <option value="Electrical Store">Electrical Store</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-500">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.0" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Conditional field for Other Business Type */}
+                  {formData.businessType === "Other" && (
+                    <div className="space-y-2 animate-fade-in">
+                      <label htmlFor="otherBusinessType" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                        Specify Business Type
+                      </label>
+                      <input
+                        id="otherBusinessType"
+                        type="text"
+                        required
+                        value={formData.otherBusinessType}
+                        onChange={(e) => setFormData({ ...formData, otherBusinessType: e.target.value })}
+                        placeholder="e.g. Solar Consultant, Energy Auditor"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
+                      />
+                    </div>
+                  )}
+
+                  {/* Conditional fields for Business Details */}
+                  {formData.businessType && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+                      {/* Company Name field */}
+                      <div className="space-y-2">
+                        <label htmlFor="companyName" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                          {companyLabel}
+                        </label>
+                        <input
+                          id="companyName"
+                          type="text"
+                          required
+                          value={formData.companyName}
+                          onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                          placeholder={companyPlaceholder}
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
+                        />
+                      </div>
+
+                      {/* Business Website/Location field */}
+                      <div className="space-y-2">
+                        <label htmlFor="businessInfo" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                          {infoLabel}
+                        </label>
+                        <input
+                          id="businessInfo"
+                          type="text"
+                          required
+                          value={formData.businessInfo}
+                          onChange={(e) => setFormData({ ...formData, businessInfo: e.target.value })}
+                          placeholder={infoPlaceholder}
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Message field */}
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                      Detailed Message
+                    </label>
+                    <textarea
+                      id="message"
+                      required
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder={messagePlaceholder}
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium resize-none"
+                    />
+                  </div>
+
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-red-700 active:scale-[0.99] transition-all shadow-md hover:shadow-lg text-sm cursor-pointer"
+                  >
+                    Transmit Request
+                  </button>
+                </form>
+              );
+            })()}
           </div>
 
         </div>
