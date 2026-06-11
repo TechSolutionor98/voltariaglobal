@@ -119,19 +119,19 @@ export default function Footer() {
           
           <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
             <li>
-              <Link href="/products#fans" className="hover:text-red-600 transition-colors">FANS</Link>
+              <Link href="/products/fans" className="hover:text-red-600 transition-colors">FANS</Link>
             </li>
             <li>
-              <Link href="/products#batteries" className="hover:text-red-600 transition-colors">BATTERIES</Link>
+              <Link href="/products/batteries" className="hover:text-red-600 transition-colors">BATTERIES</Link>
             </li>
             <li>
-              <Link href="/products#fuses-breakers" className="hover:text-red-600 transition-colors">FUSES & BREAKERS</Link>
+              <Link href="/products/fuses-breakers" className="hover:text-red-600 transition-colors">FUSES & BREAKERS</Link>
             </li>
             <li>
-              <Link href="/products#changeovers" className="hover:text-red-600 transition-colors">CHANGEOVERS</Link>
+              <Link href="/products/changeovers" className="hover:text-red-600 transition-colors">CHANGEOVERS</Link>
             </li>
             <li>
-              <Link href="/products#inverters" className="hover:text-red-600 transition-colors">INVERTERS</Link>
+              <Link href="/products/inverters" className="hover:text-red-600 transition-colors">INVERTERS</Link>
             </li>
           </ul>
         </div>
@@ -154,8 +154,12 @@ export default function Footer() {
               <Link href="/products" className="hover:text-red-600 transition-colors">Products</Link>
             </li>
             <li>
+              <Link href="/career" className="hover:text-red-600 transition-colors">Career</Link>
+            </li>
+            <li>
               <Link href="/contact" className="hover:text-red-600 transition-colors">Contact Us</Link>
             </li>
+            
           </ul>
         </div>
 
@@ -168,13 +172,13 @@ export default function Footer() {
 
           <div className="space-y-4 text-sm text-black font-bold pt-4">
             <p>
-              Phone: <span className="font-semibold text-gray-700 ml-1">+123 45 678</span>
+              Phone: <span className="font-semibold text-gray-700 ml-1">+971 4 354 0566</span>
             </p>
             <p>
               Email: <span className="font-semibold text-gray-700 ml-1">info@voltariaglobal.com</span>
             </p>
             <p>
-              Head Office: <span className="font-semibold text-gray-700 ml-1">dummy dummy</span>
+              Head Office: <span className="font-semibold text-gray-700 ml-1"> Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai</span>
             </p>
           </div>
         </div>

@@ -81,8 +81,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Global HQ</h4>
-                  <p className="text-sm text-gray-600 mt-1">Stadthausbrücke 8, 20355 Hamburg, Germany</p>
+                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Head Office</h4>
+                  <p className="text-sm text-gray-600 mt-1">Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai</p>
                 </div>
               </div>
 
@@ -95,8 +95,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Call Center</h4>
-                  <p className="text-sm text-gray-600 mt-1">+49 (0) 40 1234-5678</p>
-                  <p className="text-xs text-gray-400 mt-0.5">Mon - Fri: 8:00 AM - 6:00 PM CET</p>
+                  <p className="text-sm text-gray-600 mt-1">+971 4 354 0566</p>
+                  <p className="text-xs text-gray-400 mt-0.5">Mon - Sun: 8:00 AM - 6:00 PM</p>
                 </div>
               </div>
 
@@ -110,7 +110,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Support Desk</h4>
-                  <p className="text-sm text-gray-600 mt-1">support@voltariaglobal.com</p>
+                  <p className="text-sm text-gray-600 mt-1">info@voltariaglobal.com</p>
                 </div>
               </div>
             </div>

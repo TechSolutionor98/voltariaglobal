@@ -6,7 +6,7 @@ export default function Services() {
   const offerings = [
     {
       title: "PREMIUM FANS",
-      link: "/products#fans",
+      link: "/products/fans",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3" />
@@ -18,7 +18,7 @@ export default function Services() {
     },
     {
       title: "DEEP-CYCLE BATTERIES",
-      link: "/products#batteries",
+      link: "/products/batteries",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="7" width="16" height="10" rx="2" ry="2" />
@@ -31,7 +31,7 @@ export default function Services() {
     },
     {
       title: "HIGH-SAFETY FUSES & BREAKERS",
-      link: "/products#fuses-breakers",
+      link: "/products/fuses-breakers",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
@@ -44,7 +44,7 @@ export default function Services() {
     },
     {
       title: "AUTOMATIC CHANGEOVERS",
-      link: "/products#changeovers",
+      link: "/products/changeovers",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 3L21 7L17 11" />
@@ -57,7 +57,7 @@ export default function Services() {
     },
     {
       title: "HYBRID INVERTERS",
-      link: "/products#inverters",
+      link: "/products/inverters",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />

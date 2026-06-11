@@ -283,98 +283,109 @@ export default async function CategoryPage({ params }: PageProps) {
       </section>
 
       {/* Products Catalog List */}
-      <main className="flex-grow py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="divide-y divide-gray-100">
-            {categoryData.items.map((item, index) => (
-              <div 
-                key={index} 
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-16 group"
-              >
-                {/* Column 1: Image (4 cols) */}
-                <div className="lg:col-span-4 flex flex-col lg:h-full">
-                  {/* Product Image */}
-                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100/60 shadow-inner flex-shrink-0">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      sizes="(max-w-768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-102"
-                    />
-                    <span className="absolute top-4 left-4 px-3.5 py-1.5 bg-red-600 text-white font-extrabold text-xxs tracking-wider rounded-full uppercase shadow-md z-10">
-                      Model: {item.model}
-                    </span>
-                  </div>
-                </div>
+      <main className="flex-grow">
+        {categoryData.items.map((item, index) => {
+          const isEven = index % 2 === 0;
+          const bgClass = index % 2 === 1 ? "bg-gray-50/70 border-y border-gray-100/50" : "bg-white";
+          
+          return (
+            <section key={index} className={`py-24 ${bgClass}`}>
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                  
+                  {/* Content (Left on even index, Right on odd index) */}
+                  <div className={`lg:col-span-7 order-2 ${isEven ? 'lg:order-1' : 'lg:order-2'} space-y-6`}>
+                    {/* Model Badge */}
+                    <div className="flex items-center gap-3">
+                      <span className="bg-red-50 text-red-600 font-extrabold text-xs tracking-wider px-3.5 py-1.5 rounded-full uppercase shadow-sm">
+                        Model: {item.model}
+                      </span>
+                    </div>
 
-                {/* Column 2: Title, Description & Highlights (4 cols) */}
-                <div className="lg:col-span-4 flex flex-col lg:h-full space-y-5">
-                  <div className="space-y-2">
-                    <h3 className="text-xl sm:text-2xl font-black text-gray-950 uppercase tracking-tight leading-tight">
+                    {/* Title / Name */}
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-black uppercase tracking-tight leading-tight">
                       {item.name}
-                    </h3>
-                    <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                       {item.description}
                     </p>
-                  </div>
 
-                  {/* Product Highlights */}
-                  <ul className="space-y-2">
-                    {item.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2 text-xs text-gray-700">
-                        <svg className="w-3.5 h-3.5 text-red-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24">
-                          <polyline points="20 6 9 17 4 12" />
+                    {/* Bullet Highlights */}
+                    <ul className="space-y-3 pt-2">
+                      {item.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-3 text-sm text-gray-700">
+                          <svg className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          <span className="font-medium">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Technical Parameters Sub-table */}
+                    <div className="pt-4">
+                      <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
+                        Technical Parameters
+                      </h4>
+                      <div className="border border-gray-150 rounded-2xl overflow-hidden bg-white shadow-sm">
+                        <table className="w-full text-left border-collapse text-xs">
+                          <tbody>
+                            {Object.entries(item.specs).map(([key, val], sIdx) => (
+                              <tr 
+                                key={sIdx} 
+                                className={`border-b last:border-0 border-gray-150 ${
+                                  sIdx % 2 === 0 ? "bg-white" : "bg-gray-50/50"
+                                }`}
+                              >
+                                <td className="py-3 px-4 font-bold text-gray-500 uppercase tracking-wide w-2/5">
+                                  {key}
+                                </td>
+                                <td className="py-3 px-4 font-bold text-gray-900">
+                                  {val}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    {/* Request Bulk Quote button */}
+                    <div className="pt-6">
+                      <Link
+                        href={`/contact?inquiry=${encodeURIComponent(item.name + " (" + item.model + ") - Wholesale Bulk Inquiry")}`}
+                        className="inline-flex items-center gap-2 px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 cursor-pointer"
+                      >
+                        Request Bulk Quote
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth="3">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
                         </svg>
-                        <span className="font-semibold">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Column 3: Technical Parameters & Button (4 cols) */}
-                <div className="lg:col-span-4 flex flex-col justify-between lg:h-full space-y-6">
-                  {/* Specifications sub-table */}
-                  <div className="space-y-2">
-                    <h4 className="text-xxs font-black text-gray-400 uppercase tracking-widest">
-                      Technical Parameters
-                    </h4>
-                    <div className="border border-gray-150/80 rounded-xl overflow-hidden text-xxs bg-white shadow-sm">
-                      <table className="w-full text-left border-collapse">
-                        <tbody>
-                          {Object.entries(item.specs).map(([key, val], sIdx) => (
-                            <tr key={sIdx} className="border-b last:border-0 border-gray-100">
-                              <td className="py-2.5 px-3.5 font-extrabold text-gray-400 uppercase tracking-wide">
-                                {key}
-                              </td>
-                              <td className="py-2.5 px-3.5 font-bold text-gray-800">
-                                {val}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                      </Link>
                     </div>
                   </div>
 
-                  {/* CTA Request Button */}
-                  <div>
-                    <Link
-                      href={`/contact?inquiry=${encodeURIComponent(item.name + " (" + item.model + ") - Wholesale Bulk Inquiry")}`}
-                      className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold tracking-wider uppercase rounded-xl shadow-md hover:shadow-lg transition-all transform active:scale-98 cursor-pointer"
-                    >
-                      Request Bulk Quote
-                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth="3">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                      </svg>
-                    </Link>
+                  {/* Image (Right on even index, Left on odd index) */}
+                  <div className={`lg:col-span-5 order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-[5/6] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 group">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        sizes="(max-w-1024px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
                   </div>
+
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </section>
+          );
+        })}
       </main>
 
       {/* Footer */}
