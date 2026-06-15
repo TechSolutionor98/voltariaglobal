@@ -338,7 +338,21 @@ export async function GET(request) {
           
           mergedSec.fields = { ...parsedSec.fields };
           for (const [key, parsedField] of Object.entries(parsedSec.fields || {})) {
-            const dbField = existingSec.fields?.[key];
+            let dbField = null;
+            if (existingSec.fields) {
+              // Match by originalValue first
+              const matchedDbEntry = Object.entries(existingSec.fields).find(([_, f]) => f && f.originalValue === parsedField.originalValue);
+              if (matchedDbEntry) {
+                dbField = matchedDbEntry[1];
+              } else {
+                // Fallback to key matching ONLY if legacy data has no originalValue or if originalValue matches
+                const keyDbField = existingSec.fields[key];
+                if (keyDbField && (!keyDbField.originalValue || keyDbField.originalValue === parsedField.originalValue)) {
+                  dbField = keyDbField;
+                }
+              }
+            }
+
             if (!dbField) {
               mergedSec.fields[key] = { ...parsedField };
             } else {
