@@ -28,7 +28,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
       const params = new URLSearchParams();
       if (category) params.set('category', category);
       if (search) params.set('search', search);
-      
+
       const newRelativePathQuery = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
       window.history.pushState(null, '', newRelativePathQuery);
     }
@@ -69,14 +69,14 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
 
   return (
     <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-      
+
       {/* Main Listing Column (9/12) */}
       <div className="lg:col-span-9 space-y-8">
-        
+
         {/* Search Input Bar (types in real-time) */}
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-gray-200 pb-6">
           <h2 className="text-xl font-bold text-gray-900">Articles & Insights</h2>
-          
+
           <div className="relative w-full sm:w-80">
             <input
               type="text"
@@ -172,7 +172,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                     >
                       Read Article <span className="text-base">→</span>
                     </Link>
-                    
+
                     {blog.readMinutes && (
                       <span className="text-xs text-gray-400 font-semibold flex items-center gap-1">
                         ⏱ {blog.readMinutes} min read
@@ -188,14 +188,14 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
 
       {/* Sidebar Column (3/12) */}
       <aside className="lg:col-span-3 lg:sticky lg:top-10 space-y-8 text-left">
-        
+
         {/* About Voltaria widget in sidebar */}
         <div className="text-left space-y-4 pb-8 border-b border-gray-100">
           <h3 className="text-lg font-bold text-gray-900">Voltaria Global</h3>
           <p className="text-sm text-gray-600 leading-relaxed">
             We are a leading global provider of clean energy solutions, high-performance batteries, electrical components, and industrial changeover devices.
           </p>
-          <Link 
+          <Link
             href="/contact"
             className="inline-block px-4 py-2.5 bg-[#E70812] hover:bg-[#c90710] text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
           >
@@ -214,9 +214,8 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
               <button
                 type="button"
                 onClick={() => setCategory('')}
-                className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${
-                  !category ? 'text-[#E70812]' : 'text-gray-800 hover:text-[#E70812]'
-                }`}
+                className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${!category ? 'text-[#E70812]' : 'text-gray-800 hover:text-[#E70812]'
+                  }`}
               >
                 All Posts <span className="text-gray-400 font-normal">({initialBlogs.length})</span>
               </button>
@@ -227,9 +226,8 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                     key={cat}
                     type="button"
                     onClick={() => setCategory(isActive ? '' : cat)}
-                    className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${
-                      isActive ? 'text-[#E70812]' : 'text-gray-800 hover:text-[#E70812]'
-                    }`}
+                    className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${isActive ? 'text-[#E70812]' : 'text-gray-800 hover:text-[#E70812]'
+                      }`}
                   >
                     {cat} <span className="text-gray-400 font-normal">({count})</span>
                   </button>
@@ -245,7 +243,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
             <h3 className="text-lg font-bold text-gray-900">Recent Posts</h3>
             <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#E70812] -mb-px" />
           </div>
-          
+
           {recentPosts.length === 0 ? (
             <p className="text-xs text-gray-400 italic">No articles available.</p>
           ) : (
@@ -254,17 +252,17 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                 <div key={b._id} className="flex gap-3 group">
                   <Link href={`/blogs/${b.slug}`} className="w-20 aspect-[16/10] rounded-md overflow-hidden bg-gray-55 border border-gray-100 shrink-0 relative">
                     {b.coverImage ? (
-                      <img 
-                        src={b.coverImage} 
-                        alt={b.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform" 
+                      <img
+                        src={b.coverImage}
+                        alt={b.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                       />
                     ) : (
                       <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xs text-[#E70812]">⚡</div>
                     )}
                   </Link>
                   <div className="min-w-0 space-y-0.5">
-                    <Link 
+                    <Link
                       href={`/blogs/${b.slug}`}
                       className="text-xs font-bold text-gray-800 hover:text-[#E70812] line-clamp-2 leading-tight"
                     >
@@ -292,15 +290,15 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
           <p className="text-xs text-gray-650 leading-relaxed">
             Contact our desk for product inquiries, bulk orders, and customer service support.
           </p>
-          
+
           <div className="pt-2 space-y-2 text-xs">
-            <a 
+            <a
               href={`tel:${companyPhone}`}
               className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#E70812] hover:bg-[#c90710] rounded-lg text-white font-semibold transition-all w-full"
             >
               📞 {companyPhone}
             </a>
-            <a 
+            <a
               href={`mailto:${companyEmail}`}
               className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 hover:bg-gray-50 rounded-lg text-gray-700 font-semibold transition-all bg-white w-full"
             >
