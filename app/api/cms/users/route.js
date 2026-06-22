@@ -48,13 +48,19 @@ const ROLE_PERMISSIONS = {
     canManageUsers: false, canManageWebsites: true, canScanRoutes: true,
     canViewActivity: true
   },
+  client: {
+    canEditContent: true, canEditSeo: true, canUploadMedia: true,
+    canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
+    canViewActivity: false
+  },
   seo: {
     canEditContent: true, canEditSeo: true, canUploadMedia: false,
     canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
     canViewActivity: false
   },
-  client: {
-    canEditContent: true, canEditSeo: true, canUploadMedia: true,
+  // ── NEW: Blog Manager ─────────────────────────────────────────────────────
+  blog: {
+    canEditContent: true, canEditSeo: false, canUploadMedia: true,
     canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
     canViewActivity: false
   },
@@ -158,14 +164,18 @@ export async function PATCH(request) {
       return jsonResponse({ error: 'Access denied. Only super admin can manage users.' }, 403);
     }
     const body = await request.json();
-    const { id, role, assignedWebsites, status, name } = body;
+    const { id, role, assignedWebsites, status, name, email, password } = body;
 
     if (!id) return jsonResponse({ error: 'id is required' }, 400);
 
     const db = await getDb();
     const updateFields = { updatedAt: new Date().toISOString() };
 
-    if (name !== undefined) updateFields.name = name;
+    if (name !== undefined && name.trim()) updateFields.name = name.trim();
+    if (email !== undefined && email.trim()) updateFields.email = email.trim().toLowerCase();
+    if (password !== undefined && password.trim()) {
+      updateFields.passwordHash = hashPassword(password.trim());
+    }
     if (status !== undefined) updateFields.status = status;
     if (role !== undefined && ROLE_PERMISSIONS[role]) {
       updateFields.role = role;
@@ -188,7 +198,7 @@ export async function PATCH(request) {
     if (status !== undefined) {
       await logActivity(request, 'toggle_user_status', targetName, { id, status });
     } else {
-      await logActivity(request, 'update_user', targetName, { id, role, assignedWebsites });
+      await logActivity(request, 'update_user', targetName, { id, role, name, email });
     }
 
     return jsonResponse({ ok: true });
