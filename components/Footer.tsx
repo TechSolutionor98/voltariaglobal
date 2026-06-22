@@ -148,6 +148,9 @@ export default function Footer({ cms }: { cms?: any }) {
               <Link href="/products" className="hover:text-red-600 transition-colors">{t("Products")}</Link>
             </li>
             <li>
+              <Link href="/blogs" className="hover:text-red-600 transition-colors">{t("Blog")}</Link>
+            </li>
+            <li>
               <Link href="/career" className="hover:text-red-600 transition-colors">{t("Career")}</Link>
             </li>
             <li>

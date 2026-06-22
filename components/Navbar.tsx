@@ -129,6 +129,16 @@ export default function Navbar({ cms }: { cms?: any }) {
             )}
           </div>
           <Link
+            href="/blogs"
+            className={
+              pathname && pathname.startsWith("/blogs")
+                ? "text-red-600 font-bold tracking-wider transition-colors"
+                : "text-gray-600 hover:text-red-600 transition-colors"
+            }
+          >
+            {t("Blog")}
+          </Link>
+          <Link
             href="/contact"
             className={
               pathname === "/contact"
@@ -296,6 +306,17 @@ export default function Navbar({ cms }: { cms?: any }) {
               </div>
             )}
           </div>
+          <Link
+            href="/blogs"
+            className={`block rounded-md px-3 py-2 text-base ${
+              pathname && pathname.startsWith("/blogs")
+                ? "font-bold text-red-600 hover:bg-gray-50"
+                : "font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
+            }`}
+            onClick={() => setIsOpen(false)}
+          >
+            {t("Blog")}
+          </Link>
           <Link
             href="/contact"
             className={`block rounded-md px-3 py-2 text-base ${
