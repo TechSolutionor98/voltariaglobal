@@ -96,7 +96,7 @@ export async function GET(request) {
 
       // Merge routes with their SEO data
       const merged = routes
-        .filter(route => route.path !== '/products/[category]')
+        .filter(route => route.path !== '/products/[category]' && route.path !== '/blogs' && !route.path.startsWith('/blogs/'))
         .map(route => {
           const seo = seoEntries.find(s => s.routeId?.toString() === route._id.toString());
           return {

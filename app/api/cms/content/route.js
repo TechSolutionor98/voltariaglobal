@@ -152,18 +152,20 @@ export async function GET(request) {
         .sort({ path: 1 })
         .toArray();
 
-      const merged = routes.map(route => {
-        const content = contents.find(c => c.routeId === route._id.toString());
-        return {
-          _id: route._id.toString(),
-          path: route.path,
-          type: route.type,
-          hasContent: !!content,
-          sectionsCount: content?.sections?.length || 0,
-          status: content?.status || 'none',
-          updatedAt: content?.updatedAt || null,
-        };
-      });
+      const merged = routes
+        .filter(route => route.path !== '/products/[category]' && route.path !== '/blogs' && !route.path.startsWith('/blogs/'))
+        .map(route => {
+          const content = contents.find(c => c.routeId === route._id.toString());
+          return {
+            _id: route._id.toString(),
+            path: route.path,
+            type: route.type,
+            hasContent: !!content,
+            sectionsCount: content?.sections?.length || 0,
+            status: content?.status || 'none',
+            updatedAt: content?.updatedAt || null,
+          };
+        });
 
       return jsonResponse({ total: merged.length, pages: merged });
     }

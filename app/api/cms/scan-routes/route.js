@@ -158,8 +158,8 @@ export async function POST(request) {
     // Scan all routes
     let routes = scanAppDirectory(appDir);
     
-    // Filter out the dynamic /products/[category] template route
-    routes = routes.filter(r => r.path !== '/products/[category]');
+    // Filter out the dynamic /products/[category] template route and blogs routes
+    routes = routes.filter(r => r.path !== '/products/[category]' && r.path !== '/blogs' && !r.path.startsWith('/blogs/'));
     
     // Add root page if exists
     const rootPage = scanRootPage(appDir);
@@ -337,7 +337,9 @@ export async function GET() {
       );
     }
     
-    const routes = scanAppDirectory(appDir);
+    let routes = scanAppDirectory(appDir);
+    // Filter out blog routes
+    routes = routes.filter(r => r.path !== '/blogs' && !r.path.startsWith('/blogs/'));
     const rootPage = scanRootPage(appDir);
     if (rootPage) routes.unshift(rootPage);
     
