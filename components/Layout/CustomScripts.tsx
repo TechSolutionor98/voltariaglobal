@@ -1,104 +1,72 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
+import React from "react";
+import parse from "html-react-parser";
 
 export default function CustomScripts({ settings }: { settings: any }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
 
-  useEffect(() => {
-    // Exclude injection on admin routes or if settings aren't loaded
-    if (isAdmin || !settings) return;
+  if (isAdmin || !settings) return null;
 
-    // Use a global window flag to prevent duplicate injections on SPA page transitions
-    if ((window as any).customScriptsInjected) return;
-    (window as any).customScriptsInjected = true;
-
-    // Inject Custom Head Script (HTML)
-    if (settings.customHeadScript) {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = settings.customHeadScript;
-      
-      const elementsToAppend: { target: HTMLElement; element: Node }[] = [];
-      Array.from(tempDiv.childNodes).forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          if ((node as Element).tagName === "SCRIPT") {
-            const script = document.createElement("script");
-            // Copy all attributes (like src, async, defer, etc.)
-            Array.from((node as Element).attributes).forEach((attr) => {
-              script.setAttribute(attr.name, attr.value);
-            });
-            script.innerHTML = (node as Element).innerHTML;
-            elementsToAppend.push({ target: document.head, element: script });
-          } else {
-            elementsToAppend.push({ target: document.head, element: node.cloneNode(true) });
-          }
-        }
-      });
-
-      elementsToAppend.forEach(({ target, element }) => {
-        target.appendChild(element);
-      });
-    }
-
-    // Inject Custom Body Script (HTML)
-    if (settings.customBodyScript) {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = settings.customBodyScript;
-      
-      const elementsToAppend: { target: HTMLElement; element: Node }[] = [];
-      Array.from(tempDiv.childNodes).forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          if ((node as Element).tagName === "SCRIPT") {
-            const script = document.createElement("script");
-            // Copy all attributes
-            Array.from((node as Element).attributes).forEach((attr) => {
-              script.setAttribute(attr.name, attr.value);
-            });
-            script.innerHTML = (node as Element).innerHTML;
-            elementsToAppend.push({ target: document.body, element: script });
-          } else {
-            elementsToAppend.push({ target: document.body, element: node.cloneNode(true) });
-          }
-        }
-      });
-
-      elementsToAppend.forEach(({ target, element }) => {
-        target.appendChild(element);
-      });
-    }
-
-    // Inject Dynamic Third-Party Apps Scripts (HTML)
-    if (settings.thirdPartyApps && Array.isArray(settings.thirdPartyApps)) {
-      settings.thirdPartyApps.forEach((app: any) => {
-        if (!app.script) return;
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = app.script;
+  // Options for html-react-parser to upgrade <script> to next/script
+  const parseOptions = {
+    replace: (domNode: any) => {
+      if (domNode.name === "script") {
+        const { src, id, async, defer, ...otherAttribs } = domNode.attribs || {};
         
-        const elementsToAppend: { target: HTMLElement; element: Node }[] = [];
-        Array.from(tempDiv.childNodes).forEach((node) => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            if ((node as Element).tagName === "SCRIPT") {
-              const script = document.createElement("script");
-              // Copy all attributes
-              Array.from((node as Element).attributes).forEach((attr) => {
-                script.setAttribute(attr.name, attr.value);
-              });
-              script.innerHTML = (node as Element).innerHTML;
-              elementsToAppend.push({ target: document.body, element: script });
-            } else {
-              elementsToAppend.push({ target: document.body, element: node.cloneNode(true) });
-            }
-          }
-        });
+        // Extract inner HTML if there is a text child
+        let innerHTML = "";
+        if (domNode.children && domNode.children.length > 0) {
+          // Join text content of all children
+          innerHTML = domNode.children.map((child: any) => child.data || "").join("");
+        }
+        
+        // Generate a stable key/id
+        const scriptId = id || `custom-script-${Math.random().toString(36).substr(2, 9)}`;
 
-        elementsToAppend.forEach(({ target, element }) => {
-          target.appendChild(element);
-        });
-      });
+        return (
+          <Script
+            key={scriptId}
+            id={scriptId}
+            src={src}
+            async={async !== undefined ? true : undefined}
+            defer={defer !== undefined ? true : undefined}
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}
+            {...otherAttribs}
+          />
+        );
+      }
     }
-  }, [settings, isAdmin]);
+  };
 
-  return null;
+  // Filter active third-party apps
+  const activeThirdPartyApps = settings.thirdPartyApps?.filter((app: any) => app.active) || [];
+  
+  // Combine custom scripts with third-party app scripts
+  const combinedHeadScript = [
+    settings.customHeadScript || '',
+    settings.googleAnalyticsHeadCode || '',
+    settings.googleTagManagerHeadCode || '',
+    settings.facebookPixelHeadCode || '',
+    ...activeThirdPartyApps.map((app: any) => app.headCode || '')
+  ].filter(Boolean).join('\n');
+
+  const combinedBodyScript = [
+    settings.customBodyScript || '',
+    settings.googleAnalyticsBodyCode || '',
+    settings.googleTagManagerBodyCode || '',
+    settings.facebookPixelBodyCode || '',
+    ...activeThirdPartyApps.map((app: any) => app.bodyCode || '')
+  ].filter(Boolean).join('\n');
+
+  return (
+    <>
+      {combinedHeadScript.trim() && parse(combinedHeadScript, parseOptions)}
+      {combinedBodyScript.trim() && parse(combinedBodyScript, parseOptions)}
+    </>
+  );
 }

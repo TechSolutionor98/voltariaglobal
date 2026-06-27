@@ -38,10 +38,17 @@ async function saveSettings(data) {
     reddit: data.reddit || '',
     threads: data.threads || '',
     googleAnalyticsId: data.googleAnalyticsId || '',
+    googleAnalyticsHeadCode: data.googleAnalyticsHeadCode || '',
+    googleAnalyticsBodyCode: data.googleAnalyticsBodyCode || '',
     googleTagManagerId: data.googleTagManagerId || '',
+    googleTagManagerHeadCode: data.googleTagManagerHeadCode || '',
+    googleTagManagerBodyCode: data.googleTagManagerBodyCode || '',
     facebookPixelId: data.facebookPixelId || '',
+    facebookPixelHeadCode: data.facebookPixelHeadCode || '',
+    facebookPixelBodyCode: data.facebookPixelBodyCode || '',
     customHeadScript: data.customHeadScript || '',
     customBodyScript: data.customBodyScript || '',
+    thirdPartyApps: Array.isArray(data.thirdPartyApps) ? data.thirdPartyApps : [],
     updatedAt: new Date().toISOString()
   };
 
