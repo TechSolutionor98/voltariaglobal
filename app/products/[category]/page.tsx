@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
-  const cms = await getPublishedContent(`/products/${category}​`);
+  const cms = await getPublishedContent(`/products/${category}`);
   const navbarCms = await getPublishedContent("[Global] Navbar");
   const footerCms = await getPublishedContent("[Global] Footer");
 
@@ -82,7 +82,7 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-pedestal-fan.png"),
           description: t("High-torque portable pedestal fan with telescoping height adjustments and wide-angle oscillation."),
           features: [t("16-inch high-velocity blade set"), t("3-speed remote control interface"), t("Thermal overload fuse protection"), t("Adjustable telescopic stand")],
-          specs: { [t("Sweep Size​")]: t("400mm (16\")"), [t("Speed Options")]: t("3-Speed Settings"), [t("Airflow Capacity")]: t("85 CMM"), [t("Blade Span")]: t("1400 mm (56 inches)") },
+          specs: { [t("Sweep Size")]: t("400mm (16\")"), [t("Speed Options")]: t("3-Speed Settings"), [t("Airflow Capacity")]: t("85 CMM"), [t("Blade Span")]: t("1400 mm (56 inches)") },
           moq: t("100 Units"),
           capacity: t("5,000 Units / Month"),
           packaging: t("Standard Cartons (1 unit/box)"),
@@ -94,8 +94,8 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-exhaust-fan.png"),
           description: t("Heavy-duty rust-proof ventilation fan designed to rapidly clear air in kitchens, bathrooms, or workspaces."),
           features: [t("Automatic back-draft louvers"), t("Rust-proof ABS body construction"), t("High-velocity suction speed"), t("Easy mount wall installation framework")],
-          specs: { [t("Sweep Size​​")]: t("300mm (12\")"), [t("Speed​")]: t("1400 RPM"), [t("Suction Power")]: t("1200 m³/h"), [t("Power​")]: t("45W") },
-          moq: t("100 Units​"),
+          specs: { [t("Sweep Size")]: t("300mm (12\")"), [t("Speed")]: t("1400 RPM"), [t("Suction Power")]: t("1200 m³/h"), [t("Power")]: t("45W") },
+          moq: t("100 Units"),
           capacity: t("8,000 Units / Month"),
           packaging: t("Industrial Cartons (10 units/box)"),
           customization: t("Custom Grille Color Available")
@@ -114,7 +114,7 @@ export default async function CategoryPage({ params }: PageProps) {
           features: [t("150Ah nominal capacity"), t("Ultra-thick antimony grid structure"), t("Extra-long water refilling windows"), t("Low resistance micro-porous separators")],
           specs: { [t("Voltage")]: t("12V DC"), [t("Capacity")]: t("150Ah"), [t("Reserve Time")]: t("Up to 6 Hours"), [t("Lifespan")]: t("1500+ Cycles") },
           moq: t("24 Units (2 Pallets)"),
-          capacity: t("5,000 Units / Month​"),
+          capacity: t("5,000 Units / Month"),
           packaging: t("Palletized wood crates (12 units/pallet)"),
           customization: t("Standard custom merchant colors")
         },
@@ -124,11 +124,11 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-battery-max.png"),
           description: t("Heavy-duty 200Ah battery engineered for high-surge inverter loads and reliable residential power backups."),
           features: [t("200Ah storage capacity"), t("Acid level indicator float caps included"), t("Highly resistant to thermal runs"), t("Leak-proof grid vent design")],
-          specs: { [t("Voltage​")]: t("12V DC​"), [t("Capacity​")]: t("200Ah"), [t("Reserve Time​")]: t("Up to 8 Hours"), [t("Lifespan​")]: t("1500+ Cycles​") },
-          moq: t("24 Units (2 Pallets)​"),
-          capacity: t("5,000 Units / Month​​"),
-          packaging: t("Palletized wood crates (12 units/pallet)​"),
-          customization: t("Standard custom merchant colors​")
+          specs: { [t("Voltage")]: t("12V DC"), [t("Capacity")]: t("200Ah"), [t("Reserve Time")]: t("Up to 8 Hours"), [t("Lifespan")]: t("1500+ Cycles") },
+          moq: t("24 Units (2 Pallets)"),
+          capacity: t("5,000 Units / Month"),
+          packaging: t("Palletized wood crates (12 units/pallet)"),
+          customization: t("Standard custom merchant colors")
         },
         {
           name: t("Voltaria VoltaSuper Max"),
@@ -136,10 +136,10 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-battery-super.png"),
           description: t("Commercial-grade 230Ah tall tubular battery providing maximum backup capacity for servers and heavy inductive loads."),
           features: [t("230Ah ultra capacity"), t("Optimized active paste material"), t("5-year comprehensive coverage warranty"), t("Reinforced safety plastic handles")],
-          specs: { [t("Voltage​​")]: t("12V DC​​"), [t("Capacity​​")]: t("230Ah"), [t("Reserve Time​​")]: t("Up to 10 Hours"), [t("Lifespan​​")]: t("1800+ Cycles") },
+          specs: { [t("Voltage")]: t("12V DC"), [t("Capacity")]: t("230Ah"), [t("Reserve Time")]: t("Up to 10 Hours"), [t("Lifespan")]: t("1800+ Cycles") },
           moq: t("12 Units (1 Pallet)"),
           capacity: t("3,000 Units / Month"),
-          packaging: t("Palletized wood crates (12 units/pallet)​​"),
+          packaging: t("Palletized wood crates (12 units/pallet)"),
           customization: t("Custom Terminal Caps Available")
         }
       ]
@@ -166,11 +166,11 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-mcb-double.png"),
           description: t("Double-pole primary line isolation breaker with high thermal-magnetic tripping speed."),
           features: [t("32A main power breaker"), t("Flame-retardant polycarbonate casing"), t("Din-rail mounted convenience clip"), t("Dual-break contact safety systems")],
-          specs: { [t("Rated Voltage​")]: t("230V/400V AC"), [t("Amperage​")]: t("32A"), [t("Poles")]: t("2-Pole (DP)"), [t("Breaking Capacity")]: t("10kA") },
-          moq: t("500 Units​"),
-          capacity: t("50,000 Units / Month​"),
-          packaging: t("Cartons of 100 units (Inner boxes of 10)​"),
-          customization: t("Custom branding print available​")
+          specs: { [t("Rated Voltage")]: t("230V/400V AC"), [t("Amperage")]: t("32A"), [t("Poles")]: t("2-Pole (DP)"), [t("Breaking Capacity")]: t("10kA") },
+          moq: t("500 Units"),
+          capacity: t("50,000 Units / Month"),
+          packaging: t("Cartons of 100 units (Inner boxes of 10)"),
+          customization: t("Custom branding print available")
         },
         {
           name: t("Voltaria SafeGuard Distribution Board"),
@@ -178,9 +178,9 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-distribution-board.png"),
           description: t("Insulated 8-way distribution panel box with copper busbars and acrylic safety window."),
           features: [t("8-way Din-rail capacity"), t("Electrostatically coated metal box"), t("Integrated neutral and ground busbars"), t("Removable top and bottom gland plates")],
-          specs: { [t("Capacity​​​")]: t("8 Modules"), [t("Mounting")]: t("Flush / Surface"), [t("IP Rating")]: t("IP40 Protection"), [t("Material")]: t("Cold-Rolled Steel") },
-          moq: t("100 Units​​"),
-          capacity: t("10,000 Units / Month​"),
+          specs: { [t("Capacity")]: t("8 Modules"), [t("Mounting")]: t("Flush / Surface"), [t("IP Rating")]: t("IP40 Protection"), [t("Material")]: t("Cold-Rolled Steel") },
+          moq: t("100 Units"),
+          capacity: t("10,000 Units / Month"),
           packaging: t("Individually boxed inside metal crates"),
           customization: t("OEM Grille Paint Customization")
         }
@@ -196,7 +196,7 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-changeover-63a.png"),
           description: t("Dual-source smart automatic transfer panel with integrated under/over voltage protection parameters."),
           features: [t("63A current capacity"), t("Rapid transfer speed (< 0.5s)"), t("Clear LED diagnostics display screen"), t("Auto generator command start relay")],
-          specs: { [t("Rated Voltage​​")]: t("220V/240V AC"), [t("Amperage​​")]: t("63A"), [t("Transfer Time")]: t("< 0.4s"), [t("Warranty")]: t("2 Years") },
+          specs: { [t("Rated Voltage")]: t("220V/240V AC"), [t("Amperage")]: t("63A"), [t("Transfer Time")]: t("< 0.4s"), [t("Warranty")]: t("2 Years") },
           moq: t("20 Panels (2 Crates)"),
           capacity: t("2,000 Units / Month"),
           packaging: t("Crated cartons of 10 panels"),
@@ -208,7 +208,7 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-changeover-100a.png"),
           description: t("Industrial-grade ATS supporting generator startup triggers and heavy corporate air conditioner loads."),
           features: [t("100A high load support"), t("Integrated auxiliary contact ports"), t("External manual override key switch"), t("Flame-retardant arc grid sheets")],
-          specs: { [t("Rated Voltage​​​")]: t("400V AC Max"), [t("Amperage​​​")]: t("100A"), [t("Poles​")]: t("4-Pole"), [t("Warranty​")]: t("2 Years​") },
+          specs: { [t("Rated Voltage")]: t("400V AC Max"), [t("Amperage")]: t("100A"), [t("Poles")]: t("4-Pole"), [t("Warranty")]: t("2 Years") },
           moq: t("10 Panels (1 Crate)"),
           capacity: t("1,500 Units / Month"),
           packaging: t("Padded wooden crate (10 panels/crate)"),
@@ -226,9 +226,9 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-inverter-1.5kva.png"),
           description: t("Sleek wall-mounted hybrid solar inverter with integrated MPPT charge controller and pure sine wave voltage."),
           features: [t("1.5 kVA capacity"), t("Built-in 80A MPPT solar regulator"), t("Compatible with lead-acid & lithium cells"), t("Multi-stage battery management optimization")],
-          specs: { [t("Capacity​​​​")]: t("1500VA / 1200W"), [t("Battery Voltage")]: t("12V DC Input"), [t("MPPT Voltage")]: t("120V - 450V DC"), [t("Output Wave")]: t("Pure Sine Wave") },
+          specs: { [t("Capacity")]: t("1500VA / 1200W"), [t("Battery Voltage")]: t("12V DC Input"), [t("MPPT Voltage")]: t("120V - 450V DC"), [t("Output Wave")]: t("Pure Sine Wave") },
           moq: t("10 Inverters (2 Crates)"),
-          capacity: t("3,000 Units / Month​"),
+          capacity: t("3,000 Units / Month"),
           packaging: t("Padded wood crates (5 inverters/crate)"),
           customization: t("Merchant app dashboard integrations")
         },
@@ -238,11 +238,11 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-inverter-3kva.png"),
           description: t("High-performance hybrid solar inverter designed to power complete household loads and dual-battery packages."),
           features: [t("3.0 kVA capacity"), t("Intelligent battery charger optimizer"), t("Configurable solar/mains priority flow"), t("Backlit graphical configuration console")],
-          specs: { [t("Capacity​​​​​")]: t("3000VA / 2400W"), [t("Battery Voltage​")]: t("24V DC Input"), [t("MPPT Voltage​")]: t("120V - 450V DC​"), [t("Output Wave​")]: t("Pure Sine Wave​") },
-          moq: t("10 Inverters (2 Crates)​"),
-          capacity: t("3,000 Units / Month​​"),
-          packaging: t("Padded wood crates (5 inverters/crate)​"),
-          customization: t("Merchant app dashboard integrations​")
+          specs: { [t("Capacity")]: t("3000VA / 2400W"), [t("Battery Voltage")]: t("24V DC Input"), [t("MPPT Voltage")]: t("120V - 450V DC"), [t("Output Wave")]: t("Pure Sine Wave") },
+          moq: t("10 Inverters (2 Crates)"),
+          capacity: t("3,000 Units / Month"),
+          packaging: t("Padded wood crates (5 inverters/crate)"),
+          customization: t("Merchant app dashboard integrations")
         },
         {
           name: t("Voltaria SolX Hybrid 5kVA Wi-Fi"),
@@ -250,10 +250,10 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-inverter-5kva.png"),
           description: t("Premium commercial-grade hybrid inverter with built-in Wi-Fi logging and comprehensive mobile app dashboard."),
           features: [t("5.0 kVA capacity"), t("Zero-transfer bypass mode"), t("Parallel expansion options up to 30kVA"), t("Remote web console and Wi-Fi antennas")],
-          specs: { [t("Capacity​​​​​​")]: t("5000VA / 4000W"), [t("Battery Voltage​​")]: t("48V DC Input"), [t("MPPT Voltage​​")]: t("120V - 450V DC​​"), [t("Output Wave​​")]: t("Pure Sine Wave​​") },
+          specs: { [t("Capacity")]: t("5000VA / 4000W"), [t("Battery Voltage")]: t("48V DC Input"), [t("MPPT Voltage")]: t("120V - 450V DC"), [t("Output Wave")]: t("Pure Sine Wave") },
           moq: t("5 Inverters (1 Crate)"),
-          capacity: t("2,000 Units / Month​"),
-          packaging: t("Padded wood crates (5 inverters/crate)​​"),
+          capacity: t("2,000 Units / Month"),
+          packaging: t("Padded wood crates (5 inverters/crate)"),
           customization: t("Dedicated wholesale app integrations")
         }
       ]
