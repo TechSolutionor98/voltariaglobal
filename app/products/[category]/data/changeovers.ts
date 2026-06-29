@@ -27,16 +27,22 @@ export default function getChangeoversData(t: (val: string) => string) {
         customization: t("OEM wiring setups available")
       },
       {
-        name: t("Voltaria SmartATS 100A Heavy-Duty"),
-        model: t("S-ATS100"),
-        image: t("/images/voltaria-changeover-100a.png"),
-        description: t("Industrial-grade ATS supporting generator startup triggers and heavy corporate air conditioner loads."),
-        features: [t("100A high load support"), t("Integrated auxiliary contact ports"), t("External manual override key switch"), t("Flame-retardant arc grid sheets")],
+        name: t("Knife Type Changeover Switch"),
+        model: t("KNF-200"),
+        image: t("/images/voltaria-changeover-knf200.png"),
+        description: t("Knife Type Changeover Switch is designed to provide safe, manual, and robust source transfer in heavy-duty industrial environments. Rated at 200 Amp, 415 Volts AC, and featuring a 4-pole construction with high conductivity brass contacts, it ensures superior electrical performance and long service life."),
+        features: [
+          t("200 Amp. 415 Volts AC Rating"),
+          t("Heavy Duty Construction (4 Pole)"),
+          t("High Conductivity Brass Contacts"),
+          t("Suitable for Industrial Applications")
+        ],
         specs: { 
-          [t("Rated Voltage")]: t("400V AC Max"), 
-          [t("Amperage")]: t("100A​"), 
-          [t("Poles​")]: t("4-Pole"), 
-          [t("Warranty")]: t("2 Years") 
+          [t("Rating​")]: t("200A"), 
+          [t("Voltage​")]: t("415V AC​"), 
+          [t("Poles​")]: t("4 POLE​"), 
+          [t("Contacts​")]: t("BRASS​"),
+          [t("Quantity​")]: t("2 Piece")
         },
         moq: t("10 Panels (1 Crate)"),
         capacity: t("1,500 Units / Month"),
