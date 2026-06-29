@@ -34,7 +34,7 @@ export default function getFansData(t: (val: string) => string) {
           [t("Airflow Capacity")]: t("85 CMM"), 
           [t("Blade Span")]: t("1400 mm (56 inches)"),
           [t("Power​")]: t("60W"),
-          [t("Voltage​")]: t("220V-240V")
+          [t("Voltage​")]: t("220V-240V​")
         },
         moq: t("100 Units"),
         capacity: t("5,000 Units / Month"),
@@ -52,10 +52,10 @@ export default function getFansData(t: (val: string) => string) {
           [t("Speed​")]: t("1400 RPM"), 
           [t("Suction Power")]: t("1200 m³/h"), 
           [t("Power​​")]: t("45W"),
-          [t("Voltage​​")]: t("220V-240V"),
-          [t("Frequency​")]: t("50Hz")
+          [t("Voltage​​")]: t("220V-240V​​"),
+          [t("Frequency​")]: t("50Hz​")
         },
-        moq: t("100 Units"),
+        moq: t("100 Units​"),
         capacity: t("8,000 Units / Month"),
         packaging: t("Industrial Cartons (10 units/box)"),
         customization: t("Custom Grille Color Available")
@@ -68,14 +68,14 @@ export default function getFansData(t: (val: string) => string) {
         features: [t("18-inch aerodynamic steel blades"), t("3-speed pull cord control system"), t("Heavy-duty metal wall bracket structure"), t("Wide-angle horizontal oscillation")],
         specs: { 
           [t("Sweep Size​​​")]: t('450mm (18")'), 
-          [t("Motor Type​")]: t("100% Pure Copper"), 
+          [t("Motor Type​")]: t("100% Pure Copper​"), 
           [t("Speed​​")]: t("1350 RPM"), 
           [t("Power​​​")]: t("75W"),
-          [t("Voltage​​​")]: t("220V-240V"),
+          [t("Voltage​​​")]: t("220V-240V​​​"),
           [t("Airflow​")]: t("110 CMM")
         },
-        moq: t("50 Units"),
-        capacity: t("5,000 Units / Month"),
+        moq: t("50 Units​"),
+        capacity: t("5,000 Units / Month​"),
         packaging: t("Standard Cartons (2 units/box)"),
         customization: t("OEM Logo & Custom Color Available")
       }
