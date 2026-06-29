@@ -63,16 +63,30 @@ export default function getInvertersData(t: (val: string) => string) {
         customization: t("Merchant app dashboard integrations​")
       },
       {
-        name: t("Voltaria SolX Hybrid 5kVA Wi-Fi"),
-        model: t("SX-5.0H"),
-        image: t("/images/voltaria-inverter-5kva.png"),
-        description: t("Premium commercial-grade hybrid inverter with built-in Wi-Fi logging and comprehensive mobile app dashboard."),
-        features: [t("5.0 kVA capacity"), t("Zero-transfer bypass mode"), t("Parallel expansion options up to 30kVA"), t("Remote web console and Wi-Fi antennas")],
+        name: t("Voltaria VL-6500"),
+        model: t("VL-6500"),
+        image: t("/images/voltaria-inverter-vl6500.png"),
+        description: t("Voltaria VL-6500 is a 6500W Hybrid MPPT Solar Inverter designed for high-capacity applications. It features a dual AC output, supports operation with or without a battery, and offers feed-in to grid capabilities with smart BMS communication."),
+        features: [
+          t("6500W Pure Sine Wave Output"),
+          t("High Voltage MPPT Range (60V–450V)"),
+          t("Dual AC Output & Feed-in to Grid"),
+          t("Lithium-compatible Smart BMS (RS485/CAN)")
+        ],
         specs: { 
-          [t("Capacity")]: t("5000VA / 4000W"), 
-          [t("Battery Voltage​​")]: t("48V DC Input"), 
-          [t("MPPT Voltage")]: t("120V - 450V DC​"), 
-          [t("Output Wave")]: t("Pure Sine Wave​") 
+          [t("Rated Power​​")]: t("6.5kVA / 6.5kW (PF=1.0)"), 
+          [t("Surge Power​​")]: t("12kVA"), 
+          [t("Battery Voltage​​")]: t("48 VDC"), 
+          [t("MPPT Voltage Range​")]: t("60–450 VDC"),
+          [t("Max PV Voltage(VOC)​")]: t("500 VDC"),
+          [t("PV Start-up Voltage​​")]: t("80VDC"),
+          [t("Max PV Input Power​​")]: t("9000 W"),
+          [t("Max PV Input Current​​")]: t("27 A"),
+          [t("Max Charge Current​​")]: t("120 A"),
+          [t("AC Output​​")]: t("220-230-240V"),
+          [t("Output Frequency​​")]: t("50/60 Hz"),
+          [t("Smart Interface​")]: t("RS485 / CAN / RS232​"),
+          [t("Operating Temp​")]: t("-10°C to 60°C​​")
         },
         moq: t("5 Inverters (1 Crate)"),
         capacity: t("2,000 Units / Month"),
