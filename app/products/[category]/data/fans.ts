@@ -28,21 +28,30 @@ export default function getFansData(t: (val: string) => string) {
         customization: t("OEM Logo Printing Available")
       },
       {
-        name: t("Voltaria WindStorm Pedestal Fan"),
-        model: t("WS-16P"),
-        image: t("/images/voltaria-pedestal-fan.png"),
-        description: t("High-torque portable pedestal fan with telescoping height adjustments and wide-angle oscillation."),
-        features: [t("16-inch high-velocity blade set"), t("3-speed remote control interface"), t("Thermal overload fuse protection"), t("Adjustable telescopic stand")],
+        name: t("56\" AC DC Ceiling Fan"),
+        model: t("ACDC-56"),
+        image: t("/images/voltaria-acdc-fan.png"),
+        description: t("Voltaria 56\" AC DC Ceiling Fan is designed to provide maximum energy efficiency and high airflow. Equipped with a BLDC motor that consumes only 6–36W of power, 330 RPM speed, and 1400mm blade span, it operates on both AC 220V and DC 12V with automatic changeover."),
+        features: [
+          t("56\" Elegant Sweep (1400mm)"),
+          t("Super Energy Efficient BLDC Motor"),
+          t("Direct AC/DC Input Changeover"),
+          t("Wall Regulator & Remote Control")
+        ],
         specs: { 
-          [t("Sweep Size​")]: t('400mm (16")'), 
-          [t("Speed Options")]: t("3-Speed Settings"), 
-          [t("Airflow Capacity")]: t("85 CMM"), 
-          [t("Blade Span")]: t("1400 mm (56 inches)"),
-          [t("Power​")]: t("60W"),
-          [t("Voltage​")]: t("220V-240V​")
+          [t("Size & Voltage")]: t("56” – Operates on AC 220V / DC 12V"), 
+          [t("Power Consumption​")]: t("6–36 W"), 
+          [t("Motor Type​")]: t("Pure Copper Winding BLDC Motor"), 
+          [t("Rated Current")]: t("3A"),
+          [t("Speed​")]: t("330 RPM​"),
+          [t("Motor Durability")]: t("30,000 Hours Rated Life"),
+          [t("Adapter Requirement")]: t("Direct AC/DC Input – No External Adapter Needed"),
+          [t("Control Options")]: t("Wall-Mounted Regulator & Remote Control"),
+          [t("Input Flexibility")]: t("Automatic AC to DC Changeover"),
+          [t("Blades​")]: t("3 Metal Blades (Low Noise)")
         },
-        moq: t("100 Units"),
-        capacity: t("5,000 Units / Month"),
+        moq: t("50 Units​"),
+        capacity: t("10,000 Units / Month​"),
         packaging: t("Standard Cartons (1 unit/box)"),
         customization: t("OEM Housing Color Options")
       },
@@ -54,13 +63,13 @@ export default function getFansData(t: (val: string) => string) {
         features: [t("Automatic back-draft louvers"), t("Rust-proof ABS body construction"), t("High-velocity suction speed"), t("Easy mount wall installation framework")],
         specs: { 
           [t("Sweep Size​​")]: t('300mm (12")'), 
-          [t("Speed​")]: t("1400 RPM"), 
+          [t("Speed​​")]: t("1400 RPM"), 
           [t("Suction Power")]: t("1200 m³/h"), 
           [t("Power​​")]: t("45W"),
           [t("Voltage​​")]: t("220V-240V​​"),
           [t("Frequency​")]: t("50Hz​")
         },
-        moq: t("100 Units​"),
+        moq: t("100 Units​​"),
         capacity: t("8,000 Units / Month"),
         packaging: t("Industrial Cartons (10 units/box)"),
         customization: t("Custom Grille Color Available")
@@ -73,13 +82,13 @@ export default function getFansData(t: (val: string) => string) {
         features: [t("18-inch aerodynamic steel blades"), t("3-speed pull cord control system"), t("Heavy-duty metal wall bracket structure"), t("Wide-angle horizontal oscillation")],
         specs: { 
           [t("Sweep Size​​​")]: t('450mm (18")'), 
-          [t("Motor Type​")]: t("100% Pure Copper​"), 
-          [t("Speed​​")]: t("1350 RPM"), 
+          [t("Motor Type​​")]: t("100% Pure Copper​​"), 
+          [t("Speed​​​")]: t("1350 RPM"), 
           [t("Power​​​")]: t("75W"),
           [t("Voltage​​​")]: t("220V-240V​​​"),
           [t("Airflow​")]: t("110 CMM")
         },
-        moq: t("50 Units​"),
+        moq: t("50 Units​​"),
         capacity: t("5,000 Units / Month​"),
         packaging: t("Standard Cartons (2 units/box)"),
         customization: t("OEM Logo & Custom Color Available")
