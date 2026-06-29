@@ -96,13 +96,13 @@ export default function Navbar({ cms }: { cms?: any }) {
                   >
                     {t("FANS")}
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/products/batteries"
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
                     {t("BATTERIES")}
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/products/fuses-breakers"
                     onClick={() => setProductsOpen(false)}
@@ -263,7 +263,7 @@ export default function Navbar({ cms }: { cms?: any }) {
                 >
                   {t("FANS")}
                 </Link>
-                <Link
+                {/* <Link
                   href="/products/batteries"
                   className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
                   onClick={() => {
@@ -272,7 +272,7 @@ export default function Navbar({ cms }: { cms?: any }) {
                   }}
                 >
                   {t("BATTERIES")}
-                </Link>
+                </Link> */}
                 <Link
                   href="/products/fuses-breakers"
                   className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"

@@ -19,7 +19,7 @@ export default function Services({ cms }: { cms?: any }) {
       ),
       description: t("Ceiling, pedestal, and exhaust fan models. Engineered with heavy-copper coils and aerodynamic blades for silent, high-output air circulation.")
     },
-    {
+    /* {
       title: t("DEEP-CYCLE BATTERIES"),
       link: "/products/batteries",
       icon: (
@@ -31,7 +31,7 @@ export default function Services({ cms }: { cms?: any }) {
         </svg>
       ),
       description: t("Heavy-duty tubular and flat-plate battery units. Specially built for long-duration deep discharges in domestic UPS and commercial microgrids.")
-    },
+    }, */
     {
       title: t("HIGH-SAFETY FUSES & BREAKERS"),
       link: "/products/fuses-breakers",

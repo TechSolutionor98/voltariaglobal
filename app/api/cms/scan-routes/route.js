@@ -210,7 +210,7 @@ export async function POST(request) {
     // Add dynamic category sub-routes
     const categories = [
       { id: 'fans', name: 'Fans' },
-      { id: 'batteries', name: 'Batteries' },
+      // { id: 'batteries', name: 'Batteries' },
       { id: 'fuses-breakers', name: 'Fuses & Breakers' },
       { id: 'changeovers', name: 'Changeovers' },
       { id: 'inverters', name: 'Inverters' }

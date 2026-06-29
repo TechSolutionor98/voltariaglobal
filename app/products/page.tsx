@@ -41,7 +41,7 @@ export default async function ProductsPage() {
         [t("Factory Warranty")]: t("2 Years Direct Replacement Warranty")
       }
     },
-    {
+    /* {
       id: "batteries",
       title: t("DEEP-CYCLE TUBULAR BATTERIES"),
       tag: t("ENERGY STORAGE SUPPLY"),
@@ -68,7 +68,7 @@ export default async function ProductsPage() {
         [t("Life Expectancy")]: t("1500+ Cycles at 80% Depth of Discharge"),
         [t("Factory Warranty")]: t("5 Years Direct Merchant Warranty")
       }
-    },
+    }, */
     {
       id: "fuses-breakers",
       title: t("HIGH-SAFETY FUSES & BREAKERS"),
