@@ -153,7 +153,7 @@ export default function AdminLayout({ children, title = '' }) {
       </div>
 
       {/* Sidebar */}
-      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
+      <aside className="w-full md:w-64 flex-shrink-0 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
         <div className="mb-6 flex justify-center">
           <Link href="/admin">
             <Image alt='Voltaria Logo' width={150} height={80} src="/images/logo1.png" className="h-14 w-auto object-contain" priority />

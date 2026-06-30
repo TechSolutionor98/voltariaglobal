@@ -65,7 +65,7 @@ export async function GET(request) {
       .toArray();
 
     const filteredRoutes = routes
-      .filter(r => r.path !== '/products/[category]' && r.path !== '/blogs' && !r.path.startsWith('/blogs/'))
+      .filter(r => r.path !== '/products/[category]' && r.path !== '/blogs' && !r.path.startsWith('/blogs/') && r.path !== '/products/batteries' && r.status !== 'archived')
       .map(r => {
         if (r.parentPath === '/products/[category]') {
           return {
