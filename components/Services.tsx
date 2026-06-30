@@ -33,7 +33,7 @@ export default function Services({ cms }: { cms?: any }) {
       description: t("Heavy-duty tubular and flat-plate battery units. Specially built for long-duration deep discharges in domestic UPS and commercial microgrids.")
     }, */
     {
-      title: t("HIGH-SAFETY FUSES & BREAKERS"),
+      title: t("HIGH-SAFETY FUSES"),
       link: "/products/fuses-breakers",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

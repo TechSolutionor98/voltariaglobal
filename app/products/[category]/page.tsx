@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps) {
   const defaultTitles: Record<string, string> = {
     fans: "PREMIUM AERODYNAMIC FANS",
     batteries: "DEEP-CYCLE TUBULAR BATTERIES",
-    "fuses-breakers": "HIGH-SAFETY FUSES & BREAKERS",
+    "fuses-breakers": "HIGH-SAFETY FUSES",
     changeovers: "AUTOMATIC CHANGEOVERS (ATS)",
     inverters: "HYBRID SOLAR INVERTERS"
   };

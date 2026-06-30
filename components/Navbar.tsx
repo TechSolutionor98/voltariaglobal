@@ -108,7 +108,7 @@ export default function Navbar({ cms }: { cms?: any }) {
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
-                    {t("FUSES & BREAKERS")}
+                    {t("FUSES")}
                   </Link>
                   <Link
                     href="/products/changeovers"
@@ -281,7 +281,7 @@ export default function Navbar({ cms }: { cms?: any }) {
                     setIsOpen(false);
                   }}
                 >
-                  {t("FUSES & BREAKERS")}
+                  {t("FUSES")}
                 </Link>
                 <Link
                   href="/products/changeovers"

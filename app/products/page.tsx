@@ -71,7 +71,7 @@ export default async function ProductsPage() {
     }, */
     {
       id: "fuses-breakers",
-      title: t("HIGH-SAFETY FUSES & BREAKERS"),
+      title: t("HIGH-SAFETY FUSES"),
       tag: t("OVERCURRENT PROTECTION WHOLESALE"),
       description: t("Safeguard retail shelves and commercial contractor stocks with Voltaria's high-speed circuit protection components. Our thermal-magnetic MCBs, fuses, and DB boxes are packed in high-density cases for electrical merchants and wholesale supply houses."),
       image: t("/images/voltaria-fuse-breaker.png"),

@@ -1,6 +1,6 @@
 export default function getFusesBreakersData(t: (val: string) => string) {
   return {
-    title: t("HIGH-SAFETY FUSES & BREAKERS"),
+    title: t("HIGH-SAFETY FUSES"),
     description: t("Safeguard machinery and contractor stocks with Voltaria's high-speed circuit protection components. High-density casing optimized for electrical stores and wholesale supply houses."),
     items: [
       {
