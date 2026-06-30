@@ -235,7 +235,7 @@ export default function Contact({ cms }: { cms?: any }) {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder={t("e.g. John Doe")}
+                        placeholder={t("Enter your full name...")}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
                       />
                     </div>
@@ -251,7 +251,7 @@ export default function Contact({ cms }: { cms?: any }) {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder={t("e.g. john@company.com")}
+                        placeholder={t("Enter your email address")}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
                       />
                     </div>
