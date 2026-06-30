@@ -200,12 +200,12 @@ export default async function CategoryPage({ params }: PageProps) {
 
                   {/* Image (Right on even index, Left on odd index) */}
                   <div className={`lg:col-span-5 order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div className={`relative aspect-square sm:aspect-[4/3] lg:aspect-[5/6] ${category === 'fans' ? '' : 'rounded-[32px] overflow-hidden border border-gray-100'}`}>
+                    <div className={`relative aspect-square sm:aspect-[4/3] lg:aspect-[5/6] ${['fans', 'changeovers'].includes(category) ? '' : 'rounded-[32px] overflow-hidden border border-gray-100'}`}>
                       <ImageZoom
                         src={item.image}
                         alt={item.name}
                         isZoomable={true}
-                        objectFit={category === 'fans' ? 'contain' : 'cover'}
+                        objectFit={['fans', 'changeovers'].includes(category) ? 'contain' : 'cover'}
                       />
                     </div>
                   </div>
