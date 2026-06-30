@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
+import ImageZoom from "@/components/ImageZoom";
 
 export const dynamic = "force-dynamic";
 
@@ -200,12 +201,11 @@ export default async function CategoryPage({ params }: PageProps) {
                   {/* Image (Right on even index, Left on odd index) */}
                   <div className={`lg:col-span-5 order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className={`relative aspect-square sm:aspect-[4/3] lg:aspect-[5/6] ${category === 'fans' ? '' : 'rounded-[32px] overflow-hidden border border-gray-100'}`}>
-                      <Image
+                      <ImageZoom
                         src={item.image}
                         alt={item.name}
-                        fill
-                        sizes="(max-w-1024px) 100vw, 33vw"
-                        className={category === 'fans' ? 'object-contain' : 'object-cover'}
+                        isZoomable={true}
+                        objectFit={category === 'fans' ? 'contain' : 'cover'}
                       />
                     </div>
                   </div>
