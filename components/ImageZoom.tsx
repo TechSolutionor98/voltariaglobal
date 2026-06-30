@@ -36,7 +36,7 @@ export default function ImageZoom({ src, alt, isZoomable = true, objectFit = 'co
         fill
         sizes="100vw"
         unoptimized={true}
-        className={`transition-transform duration-300 ease-out ${objectFit === 'contain' ? 'object-contain' : 'object-cover'} ${isZoomable && isHovered ? 'cursor-crosshair' : ''}`}
+        className={`transition-transform duration-300 ease-out mix-blend-multiply ${objectFit === 'contain' ? 'object-contain' : 'object-cover'} ${isZoomable && isHovered ? 'cursor-crosshair' : ''}`}
         style={{
           transform: isHovered ? 'scale(2.5)' : 'scale(1)',
           transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
