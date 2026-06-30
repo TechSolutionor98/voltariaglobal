@@ -149,7 +149,7 @@ export default function BlogCommentsSection({
                 type="text"
                 value={authorName}
                 onChange={(e) => setAuthorName(e.target.value)}
-                placeholder="John Doe"
+                placeholder="Enter your full name..."
                 required
                 className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-[#E70812] focus:border-[#E70812] outline-none transition-all"
               />
@@ -162,7 +162,7 @@ export default function BlogCommentsSection({
                 type="email"
                 value={authorEmail}
                 onChange={(e) => setAuthorEmail(e.target.value)}
-                placeholder="john@example.com"
+                placeholder="Enter your email address"
                 required
                 className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-[#E70812] focus:border-[#E70812] outline-none transition-all"
               />
