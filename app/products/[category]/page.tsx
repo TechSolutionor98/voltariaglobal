@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 import ImageZoom from "@/components/ImageZoom";
+import BackButton from "@/components/BackButton";
 
 export const dynamic = "force-dynamic";
 
@@ -91,8 +92,7 @@ export default async function CategoryPage({ params }: PageProps) {
       {/* Hero Header */}
       <section className="bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <Link
-            href="/products"
+          <BackButton
             className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-red-600 uppercase tracking-widest mb-6 transition-colors"
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth="3">
@@ -100,7 +100,7 @@ export default async function CategoryPage({ params }: PageProps) {
               <polyline points="12 19 5 12 12 5" />
             </svg>
             {t("Back to B2B Catalog")}
-          </Link>
+          </BackButton>
           <span className="text-red-600 font-extrabold tracking-widest uppercase text-xs sm:text-sm block mb-4">
             {t("B2B WHOLESALE SOURCING PORTAL")}
           </span>
