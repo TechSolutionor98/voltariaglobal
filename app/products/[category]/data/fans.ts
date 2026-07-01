@@ -56,10 +56,10 @@ export default function getFansData(t: (val: string) => string) {
         customization: t("OEM Housing Color Options")
       },
       {
-        name: t("56\" AC DC Ceiling Fan​"),
-        model: t("ACDC-56​"),
+        name: t("56\" AC DC Ceiling Fan V2"),
+        model: t("ACDC-56 V2"),
         image: t("/images/voltaria-acdc-fan-v2.png"),
-        description: t("56\" AC DC Ceiling Fan​ is designed for high-performance and silent cooling. With a rated BLDC motor consuming 6–36W and direct AC/DC input flexibility, it ensures automatic changeover and stable airflow."),
+        description: t("56\" AC DC Ceiling Fan V2 is designed for high-performance and silent cooling. With a rated BLDC motor consuming 6–36W and direct AC/DC input flexibility, it ensures automatic changeover and stable airflow."),
         features: [
           t("56\" Elegant Sweep (1400mm)​"),
           t("Super Energy Efficient BLDC Motor​"),

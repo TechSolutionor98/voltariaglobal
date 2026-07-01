@@ -50,10 +50,10 @@ export default function getChangeoversData(t: (val: string) => string) {
         customization: t("OEM Custom Enclosure Labeling")
       },
       {
-        name: t("Knife Type Changeover Switch\u200b"),
+        name: t("Knife Type Changeover Switch (400A)"),
         model: t("KNF-400"),
         image: t("/images/voltaria-changeover-knf400.png"),
-        description: t("Knife Type Changeover Switch\u200b is designed to provide safe, manual, and robust source transfer in heavy-duty industrial environments. Rated at 400 Amp, 415 Volts AC, and featuring a 4-pole construction with high conductivity brass contacts, it ensures superior electrical performance and long service life. 100% Premium Quality, Made in India."),
+        description: t("Knife Type Changeover Switch (400A) is designed to provide safe, manual, and robust source transfer in heavy-duty industrial environments. Rated at 400 Amp, 415 Volts AC, and featuring a 4-pole construction with high conductivity brass contacts, it ensures superior electrical performance and long service life. 100% Premium Quality, Made in India."),
         features: [
           t("High Conductivity & Heavy Duty Brass Contacts"),
           t("Heavy Duty Industrial Grade (4 Pole)"),
