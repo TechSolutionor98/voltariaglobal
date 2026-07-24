@@ -3,8 +3,17 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+import JsonLdScript from "@/components/JsonLdScript";
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  return generateCmsMetadata("/about", {
+    title: "About Us - Voltaria Global",
+    description: "Voltaria is a modern power and home comfort brand dedicated to delivering reliable, efficient, and high-quality energy products.",
+  });
+}
 
 export default async function AboutPage() {
   const [cms, navbarCms, footerCms] = await Promise.all([
@@ -17,6 +26,7 @@ export default async function AboutPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
+      <JsonLdScript path="/about" />
       {/* Header Navigation */}
       <Navbar cms={navbarCms} />
 

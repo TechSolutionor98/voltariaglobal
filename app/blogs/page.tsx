@@ -3,13 +3,17 @@ import BlogListingClient from './BlogListingClient';
 import { getBlogsList, getPublishedContent } from '@/lib/cms-service';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
-export const metadata = {
-  title: 'Blog - Voltaria Global',
-  description: 'Read the latest updates, news, and expert articles on solar energy, batteries, fans, and power solutions.',
-};
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+import JsonLdScript from '@/components/JsonLdScript';
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  return generateCmsMetadata('/blogs', {
+    title: 'Blog - Voltaria Global',
+    description: 'Read the latest updates, news, and expert articles on solar energy, batteries, fans, and power solutions.',
+  });
+}
 
 export default async function ClientBlogsPage() {
   let blogs = [];
@@ -27,6 +31,7 @@ export default async function ClientBlogsPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 font-sans antialiased text-black">
+      <JsonLdScript path="/blogs" />
       <Navbar cms={navbarCms} />
 
       <main className="flex-grow">

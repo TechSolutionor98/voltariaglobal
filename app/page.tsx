@@ -7,8 +7,17 @@ import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { getPublishedContent } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+import JsonLdScript from "@/components/JsonLdScript";
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  return generateCmsMetadata("/", {
+    title: "Voltaria Global",
+    description: "Voltaria Global - Premier Energy & Power Solutions",
+  });
+}
 
 export default async function Home() {
   const [cms, navbarCms, footerCms] = await Promise.all([
@@ -19,6 +28,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
+      <JsonLdScript path="/" />
       {/* Header Navigation */}
       <Navbar cms={navbarCms} />
       

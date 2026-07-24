@@ -5,8 +5,17 @@ import Contact from "@/components/Contact";
 import AppointmentSection from "@/components/AppointmentSection";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 import { getDb } from "@/lib/mongodb";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+import JsonLdScript from "@/components/JsonLdScript";
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  return generateCmsMetadata("/contact", {
+    title: "Contact Us - Voltaria Global",
+    description: "Get in touch with Voltaria Global for bulk product inquiries, dealership applications, and corporate support.",
+  });
+}
 
 export default async function ContactPage() {
   const [cms, navbarCms, footerCms] = await Promise.all([
@@ -29,6 +38,7 @@ export default async function ContactPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F9FAFB] font-sans antialiased text-black">
+      <JsonLdScript path="/contact" />
       {/* Header Navigation */}
       <Navbar cms={navbarCms} />
 

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+import JsonLdScript from "@/components/JsonLdScript";
 import ImageZoom from "@/components/ImageZoom";
 import BackButton from "@/components/BackButton";
 import CategoryHero from "@/components/CategoryHero";
@@ -48,10 +50,10 @@ export async function generateMetadata({ params }: PageProps) {
   
   const title = t(defaultTitles[category] || "Category Not Found");
   
-  return {
+  return generateCmsMetadata(`/products/${category}`, {
     title: `${title} | B2B Sourcing Portal | Voltaria Global`,
     description: t("B2B wholesale sourcing portal for premium electrical hardware."),
-  };
+  });
 }
 
 export default async function CategoryPage({ params }: PageProps) {
@@ -89,6 +91,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
+      <JsonLdScript path={`/products/${category}`} />
       {/* Header Navigation */}
       <Navbar cms={navbarCms} />
 

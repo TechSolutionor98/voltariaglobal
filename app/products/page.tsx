@@ -3,8 +3,17 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+import JsonLdScript from "@/components/JsonLdScript";
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  return generateCmsMetadata("/products", {
+    title: "Products & Services - Voltaria Global",
+    description: "Voltaria Global is a direct B2B factory manufacturer and supplier for fans, batteries, inverters, fuses, and changeover switches.",
+  });
+}
 
 export default async function ProductsPage() {
   const [cms, navbarCms, footerCms] = await Promise.all([
@@ -156,6 +165,7 @@ export default async function ProductsPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
+      <JsonLdScript path="/products" />
       {/* Header Navigation */}
       <Navbar cms={navbarCms} />
 

@@ -6,26 +6,46 @@ import { getApiBase } from '@/lib/api-helper';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getPublishedContent } from '@/lib/cms-service';
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+import JsonLdScript from '@/components/JsonLdScript';
 
 export const revalidate = 60;
 
 // Dynamic SEO Metadata Generator
 export async function generateMetadata({ params }: any) {
   const { slug } = await params;
+  let fallbackTitle = 'Blog Post';
+  let fallbackDesc = 'Read the article on Voltaria Global Blog.';
+  let fallbackKeywords = '';
+  let blogOgImage = '';
+
   try {
     const db = await getDb();
     const blog = await db.collection('cms_blogs').findOne({ slug, published: true });
     if (blog) {
-      return {
-        title: blog.metaTitle || `${blog.title} | Voltaria Global`,
-        description: blog.metaDescription || blog.excerpt || 'Read the article on Voltaria Global Blog.',
-        keywords: blog.keywords || '',
-      };
+      fallbackTitle = blog.metaTitle || `${blog.title} | Voltaria Global`;
+      fallbackDesc = blog.metaDescription || blog.excerpt || fallbackDesc;
+      fallbackKeywords = blog.keywords || '';
+      blogOgImage = blog.coverImage || '';
     }
   } catch (err) {
     console.error('generateMetadata error for blog slug: ' + slug, err);
   }
-  return { title: 'Blog Post' };
+
+  const defaults: any = {
+    title: fallbackTitle,
+    description: fallbackDesc,
+  };
+  if (fallbackKeywords) defaults.keywords = fallbackKeywords;
+  if (blogOgImage) {
+    defaults.openGraph = {
+      title: fallbackTitle,
+      description: fallbackDesc,
+      images: [{ url: blogOgImage }],
+    };
+  }
+
+  return generateCmsMetadata(`/blogs/${slug}`, defaults);
 }
 
 export default async function BlogDetailsPage({ params }: any) {
@@ -125,6 +145,7 @@ export default async function BlogDetailsPage({ params }: any) {
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
+      <JsonLdScript path={`/blogs/${slug}`} />
       <Navbar cms={navbarCms} />
 
       <main className="flex-grow pb-20">
