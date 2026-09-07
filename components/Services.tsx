@@ -72,6 +72,23 @@ export default function Services({ cms }: { cms?: any }) {
         </svg>
       ),
       description: t("Pure sine wave solar-ready and smart grid-tied hybrid inverters. Smooth power conversion safeguarding your computer systems and fridge motors.")
+    },
+    {
+      title: t("DC SOLAR WATER PUMP"),
+      link: "/products/solar-water-pump",
+      image: t("/images/dc-solar-water-pump.png"),
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2v6" />
+          <path d="M12 18v4" />
+          <path d="M4.93 4.93l4.24 4.24" />
+          <path d="M14.83 14.83l4.24 4.24" />
+          <path d="M2 12h6" />
+          <path d="M18 12h4" />
+          <circle cx="12" cy="12" r="4" />
+        </svg>
+      ),
+      description: t("High-efficiency DC solar surface water pumps with MPPT controller and pure copper PMSM motor for agricultural irrigation and water transfer.")
     }
   ];
 

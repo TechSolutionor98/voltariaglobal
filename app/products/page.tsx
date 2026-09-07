@@ -160,6 +160,37 @@ export default async function ProductsPage() {
         [t("MPPT Solar Input")]: t("120V - 450V DC"),
         [t("Factory Warranty")]: t("2 Years Direct Manufacturer Warranty")
       }
+    },
+    {
+      id: "solar-water-pump",
+      title: t("DC SOLAR WATER PUMP"),
+      tag: t("SOLAR IRRIGATION & TRANSFER"),
+      description: t("High-efficiency DC solar-powered surface water pumps featuring smart MPPT controllers and 100% pure copper PMSM motors. Engineered for agricultural irrigation, livestock water supply, and high-volume water transfer."),
+      image: t("/images/dc-solar-water-pump.png"),
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6 text-red-600 fill-none stroke-current" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2v6" />
+          <path d="M12 18v4" />
+          <path d="M4.93 4.93l4.24 4.24" />
+          <path d="M14.83 14.83l4.24 4.24" />
+          <path d="M2 12h6" />
+          <path d="M18 12h4" />
+          <circle cx="12" cy="12" r="4" />
+        </svg>
+      ),
+      features: [
+        t("100% Pure Copper Winding with High-Torque PMSM Motor"),
+        t("High Volume Delivery: Max Flow 30m³/h & Max Head 16m"),
+        t("Smart MPPT Controller with LED Display (IP65 Weatherproof)"),
+        t("Comprehensive Multi-Guard: Dry-Run, Under-Voltage & Over-Current Protection")
+      ],
+      specs: {
+        [t("Wholesale Format")]: t("Heavy-duty reinforced export carton"),
+        [t("Min. Order Qty (MOQ)")]: t("10 Units"),
+        [t("Rated Power & Voltage")]: t("900W / 1.2HP @ 96V DC"),
+        [t("Inlet & Outlet Size")]: t("3\" × 3\""),
+        [t("Factory Warranty")]: t("2 Years Direct Manufacturer Warranty")
+      }
     }
   ];
 

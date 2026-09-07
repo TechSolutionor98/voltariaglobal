@@ -93,7 +93,7 @@ const SECTION_TEMPLATES = {
 };
 
 function getCategoryBlock(fileContent, categoryId) {
-  const keys = ['fans', 'batteries', 'fuses-breakers', 'changeovers', 'inverters'];
+  const keys = ['fans', 'batteries', 'fuses-breakers', 'changeovers', 'inverters', 'solar-water-pump'];
   const idx = keys.indexOf(categoryId);
   if (idx === -1) return fileContent;
 
@@ -245,7 +245,7 @@ export async function GET(request) {
 
     // Dynamic category page filtering and sub-section splitting
     if (route && route.path) {
-      const categoryMatch = route.path.match(/^\/products\/(fans|batteries|fuses-breakers|changeovers|inverters)$/);
+      const categoryMatch = route.path.match(/^\/products\/(fans|batteries|fuses-breakers|changeovers|inverters|solar-water-pump)$/);
       if (categoryMatch) {
         const categoryId = categoryMatch[1];
         const absoluteFilePath = path.join(process.cwd(), route.filePath);
@@ -271,7 +271,7 @@ export async function GET(request) {
             };
 
             // Inject Hero Banner Image field for categories that use it
-            if (['fans', 'inverters', 'fuses-breakers', 'changeovers'].includes(categoryId)) {
+            if (['fans', 'inverters', 'fuses-breakers', 'changeovers', 'solar-water-pump'].includes(categoryId)) {
               currentSection.fields['t_image_hero_banner'] = {
                 type: 'image',
                 value: `/images/${categoryId}-bg.png`,
@@ -301,10 +301,12 @@ export async function GET(request) {
                 "HIGH-SAFETY FUSES",
                 "Safeguard retail shelves and commercial contractor stocks with Voltaria's high-speed circuit protection components. Our thermal-magnetic MCBs, fuses, and DB boxes are packed in high-density cases for electrical merchants and wholesale supply houses.",
                 "AUTOMATIC CHANGEOVERS (ATS)",
-                "Eliminate transition power spikes with Voltaria smart ATS transfer panels. Supplying backup power manufacturers, generator builders, and industrial outlets with rapid changeover relays packed in secure crates."
+                "Eliminate transition power spikes with Voltaria smart ATS transfer panels. Supplying backup power manufacturers, generator builders, and industrial outlets with rapid changeover relays packed in secure crates.",
+                "DC SOLAR WATER PUMP",
+                "High-efficiency DC solar-powered surface water pumps with smart MPPT controller and 100% pure copper PMSM motor. Engineered for agricultural irrigation, livestock water supply, and high-volume water transfer."
               ].includes(field.originalValue?.trim());
 
-              if (['fans', 'inverters', 'fuses-breakers', 'changeovers'].includes(categoryId) && isTitleOrDesc) {
+              if (['fans', 'inverters', 'fuses-breakers', 'changeovers', 'solar-water-pump'].includes(categoryId) && isTitleOrDesc) {
                 continue;
               }
 

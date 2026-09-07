@@ -67,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     // 3. Dynamic Product Categories
-    const categories = ['fans', 'fuses-breakers', 'changeovers', 'inverters'];
+    const categories = ['fans', 'fuses-breakers', 'changeovers', 'inverters', 'solar-water-pump'];
     for (const cat of categories) {
       const catPath = `/products/${cat}`;
       if (!activePaths.has(catPath)) {

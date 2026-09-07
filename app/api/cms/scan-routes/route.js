@@ -213,7 +213,8 @@ export async function POST(request) {
       // { id: 'batteries', name: 'Batteries' },
       { id: 'fuses-breakers', name: 'Fuses & Breakers' },
       { id: 'changeovers', name: 'Changeovers' },
-      { id: 'inverters', name: 'Inverters' }
+      { id: 'inverters', name: 'Inverters' },
+      { id: 'solar-water-pump', name: 'DC Solar Water Pump' }
     ];
 
     categories.forEach(cat => {

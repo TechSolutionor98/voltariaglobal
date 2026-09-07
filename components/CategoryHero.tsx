@@ -4,7 +4,7 @@ import BackButton from '@/components/BackButton';
 export default function CategoryHero({ category, categoryData, cms, t }: any) {
   return (
     <>
-      {['changeovers', 'inverters', 'fuses-breakers', 'fans'].includes(category) ? (
+      {['changeovers', 'inverters', 'fuses-breakers', 'fans', 'solar-water-pump', 'solar-water-pumps', 'water-pumps'].includes(category) ? (
         <section className="w-full relative border-b border-gray-100 bg-white">
           <Image 
             src={t('Hero Banner Image') !== 'Hero Banner Image' ? t('Hero Banner Image') : `/images/${category}-bg.png`}

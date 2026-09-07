@@ -45,7 +45,10 @@ export async function generateMetadata({ params }: PageProps) {
     batteries: "DEEP-CYCLE TUBULAR BATTERIES",
     "fuses-breakers": "HIGH-SAFETY FUSES",
     changeovers: "AUTOMATIC CHANGEOVERS (ATS)",
-    inverters: "HYBRID SOLAR INVERTERS"
+    inverters: "HYBRID SOLAR INVERTERS",
+    "solar-water-pump": "DC SOLAR WATER PUMP",
+    "solar-water-pumps": "DC SOLAR WATER PUMP",
+    "water-pumps": "DC SOLAR WATER PUMP"
   };
   
   const title = t(defaultTitles[category] || "Category Not Found");
@@ -82,6 +85,11 @@ export default async function CategoryPage({ params }: PageProps) {
       break;
     case 'inverters':
       categoryData = require('./data/inverters').default(t);
+      break;
+    case 'solar-water-pump':
+    case 'solar-water-pumps':
+    case 'water-pumps':
+      categoryData = require('./data/solar-water-pump').default(t);
       break;
   }
 
@@ -185,12 +193,12 @@ export default async function CategoryPage({ params }: PageProps) {
 
                   {/* Image (Right on even index, Left on odd index) */}
                   <div className={`lg:col-span-5 order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div className={`relative aspect-square sm:aspect-[4/3] lg:aspect-[5/6] ${['fans', 'changeovers', 'inverters'].includes(category) ? '' : 'rounded-[32px] overflow-hidden border border-gray-100'}`}>
+                    <div className={`relative aspect-square sm:aspect-[4/3] lg:aspect-[5/6] ${['fans', 'changeovers', 'inverters', 'solar-water-pump', 'solar-water-pumps', 'water-pumps'].includes(category) ? '' : 'rounded-[32px] overflow-hidden border border-gray-100'}`}>
                       <ImageZoom
                         src={item.image}
                         alt={item.name}
                         isZoomable={true}
-                        objectFit={['fans', 'changeovers', 'inverters'].includes(category) ? 'contain' : 'cover'}
+                        objectFit={['fans', 'changeovers', 'inverters', 'solar-water-pump', 'solar-water-pumps', 'water-pumps'].includes(category) ? 'contain' : 'cover'}
                       />
                     </div>
                   </div>

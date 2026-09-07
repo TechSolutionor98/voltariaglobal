@@ -129,6 +129,9 @@ export default function Footer({ cms }: { cms?: any }) {
             <li>
               <Link href="/products/inverters" className="hover:text-red-600 transition-colors">{t("INVERTERS")}</Link>
             </li>
+            <li>
+              <Link href="/products/solar-water-pump" className="hover:text-red-600 transition-colors">{t("DC SOLAR WATER PUMP")}</Link>
+            </li>
           </ul>
         </div>
 

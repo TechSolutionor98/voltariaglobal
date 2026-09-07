@@ -135,6 +135,13 @@ export default function Navbar({ cms }: { cms?: any }) {
                   >
                     {t("INVERTERS")}
                   </Link>
+                  <Link
+                    href="/products/solar-water-pump"
+                    onClick={() => setProductsOpen(false)}
+                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
+                  >
+                    {t("DC SOLAR WATER PUMP")}
+                  </Link>
                 </div>
               </>
             )}
@@ -313,6 +320,16 @@ export default function Navbar({ cms }: { cms?: any }) {
                   }}
                 >
                   {t("INVERTERS")}
+                </Link>
+                <Link
+                  href="/products/solar-water-pump"
+                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  {t("DC SOLAR WATER PUMP")}
                 </Link>
               </div>
             )}
